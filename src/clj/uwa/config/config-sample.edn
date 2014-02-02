@@ -1,0 +1,6 @@
+{
+ :web {:https false
+       :host "localhost"
+       :port "8081"}
+ :db  {:uri "datomic://free/mem"}
+}
