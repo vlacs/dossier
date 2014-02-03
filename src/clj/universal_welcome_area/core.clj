@@ -5,8 +5,7 @@
             [compojure.handler :refer [site]]
             [universal-welcome-area.api.routes :refer [api-routes]]
             [universal-welcome-area.templates :as tmpl]
-            [universal-welcome-area.web.http :refer [wrap-host-urls]])
-  (:use [clojure.pprint]))
+            [universal-welcome-area.web.http :refer [wrap-host-urls]]))
 
 (defroutes main-routes
   (ANY "/" [] (resource :available-media-types ["text/html"]
