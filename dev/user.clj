@@ -5,7 +5,7 @@
             [clojure.repl :refer :all]
             [clojure.test :as test]
             [clojure.tools.namespace.repl :refer (refresh refresh-all)]
-            [uwa.system :as system]))
+            [universal-welcome-area.system :as system]))
 
 (def system nil)
 
@@ -23,8 +23,7 @@
 (defn stop
   "Shuts down and destroys the current development system."
   []
-  (alter-var-root #'system
-    (fn [s] (when s (system/stop s)))))
+  (alter-var-root #'system system/stop))
 
 (defn go
   "Initializes the current development system and starts it running."
