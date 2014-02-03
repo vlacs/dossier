@@ -5,13 +5,14 @@
             [compojure.handler :refer [site]]
             [universal-welcome-area.api.routes :refer [api-routes]]
             [universal-welcome-area.templates :as tmpl]
-            [universal-welcome-area.web.http :refer [wrap-host-urls]]))
+            [universal-welcome-area.web.http :refer [wrap-host-urls]]
+            [universal-welcome-area.utils :as u-utils]))
 
 (defroutes main-routes
   (ANY "/" [] (resource :available-media-types ["text/html"]
                         :handle-ok (fn [ctx]
-                                     (reduce str (tmpl/base {:base-url (str (get-in ctx [:request :base-url]))
-                                                             :title "Universal Welcome Area!"}))))))
+                                     (tmpl/render (tmpl/base {:base-url (u-utils/base-url ctx)
+                                                              :title "Universal Welcome Area!"}))))))
 
 (def handler
   (routes

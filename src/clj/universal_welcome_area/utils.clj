@@ -10,3 +10,6 @@
   "https://github.com/swannodette/enlive-tutorial/"
   ([expr] `(if-let [x# ~expr] (html/content x#) identity))
   ([expr & exprs] `(maybe-content (or ~expr ~@exprs))))
+
+(defn base-url [ctx]
+  (str (get-in ctx [:request :base-url])))
