@@ -2,7 +2,7 @@
   (:require [clojure.edn :as edn])
   (:import [java.io File]))
 
-(def default-config-path "config/")
+(def default-config-path "src/config/")
 
 (defn throw-file-missing
   [path]
@@ -24,4 +24,4 @@
 
 (defn load-config
   []
-  )
+  (load-edn (str default-config-path "config.edn")))

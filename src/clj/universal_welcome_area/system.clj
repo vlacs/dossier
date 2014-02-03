@@ -1,17 +1,15 @@
 (ns universal-welcome-area.system
   (:use org.httpkit.server)
-  (:require [universal-welcome-area.conf :as conf]
-            [universal-welcome-area.core :as core]))
+  (:require [universal-welcome-area.conf :as u-conf]
+            [universal-welcome-area.core :as u-core]))
 
-(defn system
-  []
-  (let [conf (conf/load-config)]
-  {:conf conf}))
+(defn system []
+  u-conf/load-config)
 
 (defonce server (atom nil))
 
-(defn start-http []
-  (reset! server (run-server core/app {:port 8081})))
+(defn start-http [system]
+  (reset! server (run-server u-core/app {:port (get-in (system) [:web :port])})))
 
 (defn stop-http []
   (when-not (nil? @server)
@@ -19,10 +17,10 @@
     (@server :timeout 100)
     (reset! server nil)))
 
-(defn start [_]
-  (start-http))
+(defn start [system]
+  (start-http system))
 
-(defn stop [_]
+(defn stop [system]
   (stop-http))
 
 (defn -main [&args]
