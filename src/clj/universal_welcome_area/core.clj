@@ -1,12 +1,12 @@
 (ns universal-welcome-area.core
-  (:require [liberator.core :refer [resource]]
-            [compojure.core :refer [defroutes routes ANY]]
-            [compojure.route :refer [resources not-found]]
+  (:require [compojure.core :refer [ANY defroutes routes]]
             [compojure.handler :refer [site]]
+            [compojure.route :refer [not-found resources]]
+            [liberator.core :refer [resource]]
             [universal-welcome-area.api.routes :refer [api-routes]]
             [universal-welcome-area.templates :as tmpl]
-            [universal-welcome-area.web.http :refer [wrap-host-urls]]
-            [universal-welcome-area.utils :as u-utils]))
+            [universal-welcome-area.utils :as u-utils]
+            [universal-welcome-area.web.http :refer [wrap-host-urls]]))
 
 (defroutes main-routes
   (ANY "/" [] (resource :available-media-types ["text/html"]

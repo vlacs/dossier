@@ -1,6 +1,6 @@
 (ns universal-welcome-area.conf
   (:require [clojure.edn :as edn])
-  (:import [java.io File]))
+  (:import (java.io File)))
 
 (def default-config-path "src/config/")
 

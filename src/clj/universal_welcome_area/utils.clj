@@ -1,5 +1,4 @@
-(ns universal-welcome-area.utils
-  (:require [net.cgrand.enlive-html :as html]))
+(ns universal-welcome-area.utils)
 
 (defmacro maybe-substitute
   "https://github.com/swannodette/enlive-tutorial/"

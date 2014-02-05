@@ -1,6 +1,6 @@
 (ns universal-welcome-area.system
-  (:use org.httpkit.server)
-  (:require [universal-welcome-area.conf :as u-conf]
+  (:require [org.httpkit.server :refer :all]
+            [universal-welcome-area.conf :as u-conf]
             [universal-welcome-area.core :as u-core]))
 
 (defn system []

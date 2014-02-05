@@ -1,5 +1,5 @@
 (ns universal-welcome-area.api.routes
-  (:require [compojure.core :refer [defroutes ANY]]
+  (:require [compojure.core :refer [ANY defroutes]]
             [liberator.core :refer [resource]]))
 
 (defroutes api-routes

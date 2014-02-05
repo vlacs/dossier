@@ -1,7 +1,7 @@
 (ns universal-welcome-area.templates
-  (:require [net.cgrand.enlive-html :as html])
-  (:use [universal-welcome-area.utils
-         :only [maybe-content maybe-substitute]]))
+  (:require [net.cgrand.enlive-html :as html]
+            [universal-welcome-area.utils :refer [maybe-content
+                                                  maybe-substitute]]))
 
 (defn replace-asset-path [base-url]
   (html/transform-content (html/replace-vars {:ASSET_PATH (str base-url "/static/")})))
