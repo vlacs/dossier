@@ -16,4 +16,5 @@
 
   :profiles {:dev {:source-paths ["dev"]
                    :dependencies [[org.clojure/tools.namespace "0.2.4"]
-                                  [org.clojure/java.classpath "0.2.2"]]}})
+                                  [org.clojure/java.classpath "0.2.2"]]}}
+  :main ^{:skip-aot true} universal-welcome-area.system)
