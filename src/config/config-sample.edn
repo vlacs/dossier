@@ -1,8 +1,4 @@
 {
- :web {:https false
-       :host "localhost"
-       :port "8081"}
+ :web {:port 8080}
  :db  {:uri "datomic://free/mem"}
- :env {:dev true
-       :asset-path "//localhost:8081/static/"}
 }
