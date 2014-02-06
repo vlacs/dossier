@@ -11,7 +11,7 @@
 (defroutes main-routes
   (ANY "/" [] (resource :available-media-types ["text/html"]
                         :handle-ok (fn [ctx]
-                                     (tmpl/render (tmpl/view_main (u-utils/base-url ctx)))))))
+                                     (tmpl/render (tmpl/view-main (u-utils/base-url ctx)))))))
 
 (def handler
   (routes

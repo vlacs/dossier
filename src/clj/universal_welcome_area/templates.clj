@@ -36,7 +36,7 @@
 
 ;;views
 
-(defn view_main [base-url]
+(defn view-main [base-url]
   (base {:title "VLACS UWA"
          :nav (nav {:brand "Universal Welcome Area!"})
          :content (main)
