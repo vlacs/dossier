@@ -11,8 +11,7 @@
 (defroutes main-routes
   (ANY "/" [] (resource :available-media-types ["text/html"]
                         :handle-ok (fn [ctx]
-                                     (tmpl/render (tmpl/base {:base-url (u-utils/base-url ctx)
-                                                              :title "Universal Welcome Area!"}))))))
+                                     (tmpl/render (tmpl/view_main (u-utils/base-url ctx)))))))
 
 (def handler
   (routes

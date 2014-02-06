@@ -9,6 +9,8 @@
 (defn render [template]
   (reduce str template))
 
+;; base template
+
 (html/deftemplate base "templates/base.html"
   [{:keys [title nav content footer base-url]}]
   [:#title]        (maybe-content title)
@@ -16,3 +18,27 @@
   [:#content]      (maybe-substitute content)
   [:#footer]       (maybe-substitute footer)
   [#{:head :body}] (replace-asset-path base-url))
+
+;;snippets
+
+(html/defsnippet nav "templates/snippets/nav.html" [:div#nav]
+  [{:keys [brand nav-items]}]
+  [:a#brand] (maybe-content brand)
+  )
+
+(html/defsnippet footer "templates/snippets/footer.html" [:footer#footer]
+  [])
+
+;;pages
+
+(html/defsnippet main "templates/pages/main.html" [:div#content]
+  [])
+
+;;views
+
+(defn view_main [base-url]
+  (base {:title "VLACS UWA"
+         :nav (nav {:brand "Universal Welcome Area!"})
+         :content (main)
+         :footer (footer)
+         :base-url base-url}))
