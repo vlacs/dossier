@@ -33,11 +33,17 @@
 (html/defsnippet main "templates/pages/main.html" [:div#content]
   [])
 
+;;layouts
+
+(defn layout-main [title content base-url]
+  (base {:title title
+         :nav (nav {:brand "Universal Welcome Area"})
+         :content content
+         :footer (footer)
+         :base-url base-url}))
+
 ;;views
 
 (defn view-main [base-url]
-  (base {:title "VLACS UWA"
-         :nav (nav {:brand "Universal Welcome Area!"})
-         :content (main)
-         :footer (footer)
-         :base-url base-url}))
+  (layout-main "VLACS UWA" (main) base-url))
+
