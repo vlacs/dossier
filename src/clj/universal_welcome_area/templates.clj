@@ -23,8 +23,7 @@
 
 (html/defsnippet nav "templates/snippets/nav.html" [:div#nav]
   [{:keys [brand nav-items]}]
-  [:a#brand] (maybe-content brand)
-  )
+  [:a#brand] (maybe-content brand))
 
 (html/defsnippet footer "templates/snippets/footer.html" [:footer#footer]
   [])
