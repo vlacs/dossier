@@ -3,6 +3,7 @@
             [compojure.handler :refer [site]]
             [compojure.route :refer [not-found resources]]
             [liberator.core :refer [resource]]
+            [liberator.dev :refer [wrap-trace]]
             [ring.middleware.file-info :refer [wrap-file-info]]
             [ring.middleware.params :refer [wrap-params]]
             [ring.middleware.multipart-params :refer [wrap-multipart-params]]
@@ -24,6 +25,7 @@
    (not-found "The resource you are looking for is not here.")))
 
 (def app (-> (var handler)
+             (wrap-trace :header :ui)
              (wrap-params)
              (wrap-multipart-params)
              (wrap-file-info)

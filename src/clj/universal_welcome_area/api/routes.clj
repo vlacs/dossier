@@ -2,6 +2,7 @@
   (:require [clojure.pprint :refer [pprint]]
             [compojure.core :refer [ANY defroutes]]
             [liberator.core :refer [resource]]
+            [universal-welcome-area.api.photo-upload :as u-photo-upload]
             [universal-welcome-area.utils :as u-utils]))
 
 (defroutes api-routes
@@ -10,5 +11,5 @@
   (ANY "/api/photo-upload/" [] (resource :allowed-methods [:post]
                                          :available-media-types["multipart/form-data"]
                                          :post! (fn [ctx]
-                                                  (pprint ctx))
-                                         :post-redirect? (fn [ctx] {:location (str (u-utils/base-url ctx) "test/")}))))
+                                                  (dosync
+                                                    (u-photo-upload/handle-upload ctx))))))
