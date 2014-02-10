@@ -4,12 +4,12 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[compojure "1.1.6"]
+                 [clj-aws-s3 "0.3.7"]
                  [enlive "1.1.5"]
                  [http-kit "2.1.16"]
-                 [javax.servlet/servlet-api "2.5"]
                  [liberator "0.10.0"]
                  [org.clojure/clojure "1.5.1"]
-                 [ring/ring-core "1.2.1"]]
+                 [ring "1.2.1"]]
 
   :source-paths ["src/clj"]
   :resource-paths ["resources"]

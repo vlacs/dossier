@@ -3,6 +3,9 @@
             [compojure.handler :refer [site]]
             [compojure.route :refer [not-found resources]]
             [liberator.core :refer [resource]]
+            [ring.middleware.file-info :refer [wrap-file-info]]
+            [ring.middleware.params :refer [wrap-params]]
+            [ring.middleware.multipart-params :refer [wrap-multipart-params]]
             [universal-welcome-area.api.routes :refer [api-routes]]
             [universal-welcome-area.templates :as tmpl]
             [universal-welcome-area.utils :as u-utils]
@@ -21,4 +24,7 @@
    (not-found "The resource you are looking for is not here.")))
 
 (def app (-> (var handler)
+             (wrap-params)
+             (wrap-multipart-params)
+             (wrap-file-info)
              (wrap-host-urls)))

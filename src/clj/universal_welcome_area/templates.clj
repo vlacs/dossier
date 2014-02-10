@@ -30,7 +30,7 @@
 
 ;;pages
 
-(html/defsnippet main "templates/pages/main.html" [:div#content]
+(html/defsnippet pg-main "templates/pages/main.html" [:div#content]
   [])
 
 ;;layouts
@@ -45,5 +45,4 @@
 ;;views
 
 (defn view-main [base-url]
-  (layout-main "VLACS UWA" (main) base-url))
-
+  (layout-main "VLACS UWA" (pg-main) base-url))
