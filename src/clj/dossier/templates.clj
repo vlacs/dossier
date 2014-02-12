@@ -1,6 +1,6 @@
 (ns dossier.templates
   (:require [net.cgrand.enlive-html :as html]
-            [dossier.utils :as u-utils]
+            [dossier.utils :as d-utils]
             [dossier.utils :refer [maybe-content
                                                   maybe-substitute]]))
 
@@ -52,8 +52,8 @@
          :nav (nav {:brand "Universal Welcome Area"})
          :content content
          :footer (footer)
-         :base-url (u-utils/base-url ctx)
-         :error (if (empty? (u-utils/error ctx)) (error-hidden) (error (u-utils/error ctx)))}))
+         :base-url (d-utils/base-url ctx)
+         :error (if (empty? (d-utils/error ctx)) (error-hidden) (error (d-utils/error ctx)))}))
 
 ;;views
 

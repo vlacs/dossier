@@ -10,7 +10,6 @@
             [ring.middleware.multipart-params :refer [wrap-multipart-params]]
             [dossier.api.routes :refer [api-routes]]
             [dossier.templates :as tmpl]
-            [dossier.utils :as u-utils]
             [dossier.web.http :refer [wrap-host-urls]]))
 
 (defroutes main-routes

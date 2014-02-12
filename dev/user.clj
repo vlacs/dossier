@@ -5,7 +5,7 @@
             [clojure.repl :refer :all]
             [clojure.test :as test]
             [clojure.tools.namespace.repl :refer (refresh refresh-all)]
-            [dossier.system :as u-system]))
+            [dossier.system :as d-system]))
 
 (def system nil)
 
@@ -13,17 +13,17 @@
   "Constructs the current development system."
   []
   (alter-var-root #'system
-    (constantly (u-system/system))))
+    (constantly (d-system/system))))
 
 (defn start
   "Starts the current development system."
   []
-  (u-system/start system))
+  (d-system/start system))
 
 (defn stop
   "Shuts down and destroys the current development system."
   []
-  (alter-var-root #'system u-system/stop))
+  (alter-var-root #'system d-system/stop))
 
 (defn go
   "Initializes the current development system and starts it running."

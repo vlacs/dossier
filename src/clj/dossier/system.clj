@@ -1,15 +1,15 @@
 (ns dossier.system
   (:require [org.httpkit.server :refer :all]
-            [dossier.conf :as u-conf]
-            [dossier.core :as u-core]))
+            [dossier.conf :as d-conf]
+            [dossier.core :as d-core]))
 
 (defn system []
-  u-conf/load-config)
+  d-conf/load-config)
 
 (defonce server (atom nil))
 
 (defn start-http [system]
-  (reset! server (run-server u-core/app {:port (get-in (system) [:web :port])})))
+  (reset! server (run-server d-core/app {:port (get-in (system) [:web :port])})))
 
 (defn stop-http []
   (when-not (nil? @server)
