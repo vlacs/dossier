@@ -8,8 +8,8 @@
 (defn post-has-error? [ctx]
   (if
     (empty? (:request-error ctx))
-    {:location (str (u-utils/base-url ctx))}
-    {:location (str (get-in ctx [:request :headers "referer"]) "?error=" (:request-error ctx))}))
+    {:location (u-utils/referer ctx)}
+    {:location (str (u-utils/referer ctx) "?error=" (:request-error ctx))}))
 
 (defroutes api-routes
   (ANY "/api/" [] (resource :available-media-types ["text/html"]

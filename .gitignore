@@ -9,4 +9,7 @@ pom.xml.asc
 /.nrepl-port
 config.edn
 .DS_Store
-photo-upload/*
+*.png
+*.gif
+*.jpg
+*.jpeg

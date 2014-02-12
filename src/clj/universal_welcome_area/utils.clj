@@ -10,6 +10,9 @@
   ([expr] `(if-let [x# ~expr] (html/content x#) identity))
   ([expr & exprs] `(maybe-content (or ~expr ~@exprs))))
 
+(defn referer [ctx]
+  (str (get-in ctx [:request :headers "referer"])))
+
 (defn base-url [ctx]
   (str (get-in ctx [:request :base-url])))
 
