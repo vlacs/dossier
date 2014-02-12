@@ -8,6 +8,7 @@
                  [enlive "1.1.5"]
                  [http-kit "2.1.16"]
                  [liberator "0.10.0"]
+                 [lib-noir "0.8.0"]
                  [org.clojure/clojure "1.5.1"]
                  [ring "1.2.1"]]
 

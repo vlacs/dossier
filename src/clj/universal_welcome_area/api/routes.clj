@@ -9,6 +9,9 @@
   (ANY "/api/" [] (resource :available-media-types ["text/html"]
                             :handle-ok (str "This is the API endpoint.")))
   (ANY "/api/photo-upload/" [] (resource :allowed-methods [:post]
+                                         :malformed? (fn [ctx]
+                                                       false)
+                                         :handle-malformed (str "There was an error with your request.")
                                          :available-media-types["multipart/form-data"]
                                          :post! (fn [ctx]
                                                   (dosync
