@@ -5,7 +5,7 @@
             [clojure.repl :refer :all]
             [clojure.test :as test]
             [clojure.tools.namespace.repl :refer (refresh refresh-all)]
-            [universal-welcome-area.system :as u-system]))
+            [dossier.system :as u-system]))
 
 (def system nil)
 
