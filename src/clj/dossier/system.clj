@@ -1,7 +1,7 @@
-(ns universal-welcome-area.system
+(ns dossier.system
   (:require [org.httpkit.server :refer :all]
-            [universal-welcome-area.conf :as u-conf]
-            [universal-welcome-area.core :as u-core]))
+            [dossier.conf :as u-conf]
+            [dossier.core :as u-core]))
 
 (defn system []
   u-conf/load-config)

@@ -1,4 +1,4 @@
-(ns universal-welcome-area.utils)
+(ns dossier.utils)
 
 (defmacro maybe-substitute
   "https://github.com/swannodette/enlive-tutorial/"

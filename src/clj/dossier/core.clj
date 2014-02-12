@@ -1,4 +1,4 @@
-(ns universal-welcome-area.core
+(ns dossier.core
   (:require [clojure.pprint :refer [pprint]]
             [compojure.core :refer [ANY defroutes routes]]
             [compojure.handler :refer [site]]
@@ -8,10 +8,10 @@
             [ring.middleware.file-info :refer [wrap-file-info]]
             [ring.middleware.params :refer [wrap-params]]
             [ring.middleware.multipart-params :refer [wrap-multipart-params]]
-            [universal-welcome-area.api.routes :refer [api-routes]]
-            [universal-welcome-area.templates :as tmpl]
-            [universal-welcome-area.utils :as u-utils]
-            [universal-welcome-area.web.http :refer [wrap-host-urls]]))
+            [dossier.api.routes :refer [api-routes]]
+            [dossier.templates :as tmpl]
+            [dossier.utils :as u-utils]
+            [dossier.web.http :refer [wrap-host-urls]]))
 
 (defroutes main-routes
   (ANY "/" [] (resource :available-media-types ["text/html"]

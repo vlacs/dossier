@@ -1,4 +1,4 @@
-(ns universal-welcome-area.web.http)
+(ns dossier.web.http)
 
 ;;wrap-host-urls and related functions created by: https://github.com/jrdoanes
 

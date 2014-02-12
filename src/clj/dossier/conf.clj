@@ -1,4 +1,4 @@
-(ns universal-welcome-area.conf
+(ns dossier.conf
   (:require [clojure.edn :as edn])
   (:import (java.io File)))
 

@@ -1,4 +1,4 @@
-(ns universal-welcome-area.validation)
+(ns dossier.validation)
 
 (defn invalid-image? [image]
   (let [ct (:content-type image)]

@@ -1,4 +1,4 @@
-(defproject universal-welcome-area "0.1.0-SNAPSHOT"
+(defproject dossier "0.1.1-SNAPSHOT"
   :description "Streamlines the creation of classroom welcome areas."
   :url "http://vlacs.org"
   :license {:name "Eclipse Public License"
@@ -18,4 +18,4 @@
   :profiles {:dev {:source-paths ["dev"]
                    :dependencies [[org.clojure/tools.namespace "0.2.4"]
                                   [org.clojure/java.classpath "0.2.2"]]}}
-  :main ^{:skip-aot true} universal-welcome-area.system)
+  :main ^{:skip-aot true} dossier.system)

@@ -1,7 +1,7 @@
-(ns universal-welcome-area.templates
+(ns dossier.templates
   (:require [net.cgrand.enlive-html :as html]
-            [universal-welcome-area.utils :as u-utils]
-            [universal-welcome-area.utils :refer [maybe-content
+            [dossier.utils :as u-utils]
+            [dossier.utils :refer [maybe-content
                                                   maybe-substitute]]))
 
 (defn replace-asset-path [base-url]
