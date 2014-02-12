@@ -5,6 +5,12 @@
             [universal-welcome-area.api.photo-upload :as u-photo-upload]
             [universal-welcome-area.utils :as u-utils]))
 
+(defn post-has-error? [ctx]
+  (if
+    (empty? (:request-error ctx))
+    {:location (str (u-utils/base-url ctx))}
+    {:location (str (get-in ctx [:request :headers "referer"]) "?error=" (:request-error ctx))}))
+
 (defroutes api-routes
   (ANY "/api/" [] (resource :available-media-types ["text/html"]
                             :handle-ok (str "This is the API endpoint.")))
@@ -16,10 +22,4 @@
                                          :post! (fn [ctx]
                                                   (dosync
                                                     (u-photo-upload/handle-upload ctx)))
-                                         :post-redirect? (fn [ctx]
-                                                           (pprint ctx)
-                                                           (if
-                                                             (empty? (:request-error ctx))
-                                                             {:location (str (u-utils/base-url ctx))}
-                                                             {:location (str (get-in ctx [:request :headers "referer"]) "?error=" (:request-error ctx))}))))
-  )
+                                         :post-redirect? (fn [ctx] (post-has-error? ctx)))))
