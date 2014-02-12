@@ -15,4 +15,11 @@
                                          :available-media-types["multipart/form-data"]
                                          :post! (fn [ctx]
                                                   (dosync
-                                                    (u-photo-upload/handle-upload ctx))))))
+                                                    (u-photo-upload/handle-upload ctx)))
+                                         :post-redirect? (fn [ctx]
+                                                           (pprint ctx)
+                                                           (if
+                                                             (empty? (:request-error ctx))
+                                                             {:location (str (u-utils/base-url ctx))}
+                                                             {:location (str (get-in ctx [:request :headers "referer"]) "?error=" (:request-error ctx))}))))
+  )

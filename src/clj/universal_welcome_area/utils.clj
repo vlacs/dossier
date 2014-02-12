@@ -12,3 +12,6 @@
 
 (defn base-url [ctx]
   (str (get-in ctx [:request :base-url])))
+
+(defn error [ctx]
+  (str (get-in ctx [:request :query-params "error"])))

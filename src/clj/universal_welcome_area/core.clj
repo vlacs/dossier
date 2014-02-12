@@ -1,5 +1,6 @@
 (ns universal-welcome-area.core
-  (:require [compojure.core :refer [ANY defroutes routes]]
+  (:require [clojure.pprint :refer [pprint]]
+            [compojure.core :refer [ANY defroutes routes]]
             [compojure.handler :refer [site]]
             [compojure.route :refer [not-found resources]]
             [liberator.core :refer [resource]]
@@ -15,7 +16,10 @@
 (defroutes main-routes
   (ANY "/" [] (resource :available-media-types ["text/html"]
                         :handle-ok (fn [ctx]
-                                     (tmpl/render (tmpl/view-main (u-utils/base-url ctx)))))))
+                                     (tmpl/render (tmpl/view-main ctx)))))
+  (ANY "/upload/" [] (resource :available-media-types["text/html"]
+                               :handle-ok (fn [ctx]
+                                            (tmpl/render (tmpl/view-test ctx))))))
 
 (def handler
   (routes
