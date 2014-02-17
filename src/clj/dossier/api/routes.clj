@@ -1,20 +1,18 @@
 (ns dossier.api.routes
-  (:require [clojure.pprint :refer [pprint]]
+  (:require [cheshire.core :refer [generate-string]]
+            [clojure.pprint :refer [pprint]]
             [compojure.core :refer [ANY defroutes]]
             [liberator.core :refer [resource]]
+            [dossier.api.api :as d-api]
             [dossier.api.photo-upload :as d-photo-upload]
             [dossier.utils :as d-utils]))
-
-(defn post-has-error? [ctx]
-  (if
-    (empty? (:request-error ctx))
-    {:location (d-utils/referer ctx)}
-    {:location (str (d-utils/referer ctx) "?error=" (:request-error ctx))}))
 
 (defroutes api-routes
   (ANY "/api/" [] (resource :available-media-types ["text/html"]
                             :handle-ok (str "This is the API endpoint.")))
-  (ANY "/api/photo-upload/" [] (resource :allowed-methods [:post]
-                                         :available-media-types["multipart/form-data"]
+  (ANY "/api/photo-upload/" [] (resource :allowed-methods [:post :put]
+                                         :available-media-types["application-json"]
                                          :post! (fn [ctx] (dosync (d-photo-upload/handle-upload ctx)))
-                                         :post-redirect? (fn [ctx] (post-has-error? ctx)))))
+                                         :post-redirect? (fn [ctx] (d-api/post-has-error? ctx))
+                                         :put! (fn [ctx] (dosync (d-photo-upload/handle-upload ctx)))
+                                         :handle-created (fn [ctx] (d-api/handle-created ctx)))))
