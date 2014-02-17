@@ -1,6 +1,6 @@
-(ns universal-welcome-area.core-test
+(ns dossier.core-test
   (:require [clojure.test :refer :all]
-            [universal-welcome-area.core :refer :all]))
+            [dossier.core :refer :all]))
 
 (deftest a-test
   (testing "FIXME, I fail."
